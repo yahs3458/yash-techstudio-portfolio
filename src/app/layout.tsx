@@ -12,10 +12,22 @@ const mono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const description =
+  "Yash Sharma designs and builds fast, beautiful landing pages and websites for small businesses and startups. Remote, worldwide.";
+
+// og/twitter image comes from app/opengraph-image.png (Next file convention)
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.yashtechstudio.com"),
   title: "Yash Techstudio — Landing pages & websites that sell",
-  description:
-    "Yash Sharma designs and builds fast, beautiful landing pages and websites for small businesses and startups. Remote, worldwide.",
+  description,
+  openGraph: {
+    title: "Yash Techstudio — Websites that sell",
+    description,
+    url: "/",
+    siteName: "Yash Techstudio",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", title: "Yash Techstudio — Websites that sell", description },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
