@@ -4,14 +4,14 @@ import Contact from "./Contact";
 
 const LINKEDIN = "https://www.linkedin.com/in/yash-sharma-a39718232/";
 
-// Paste each Vercel URL into `live` once deployed; empty means "live link soon".
+// Live URLs — swap to the yashtechstudio.com subdomains once their DNS is set up.
 const WORK = [
   {
     name: "NOIR",
     tag: "Coffee & Kitchen",
     kind: "Café & restaurant",
     shot: "/work/noir.png",
-    live: "",
+    live: "https://noir-cafe-weld.vercel.app",
     summary: "A warm, photo-led site for a specialty café — built to turn Instagram browsers into reservations.",
     built: ["Tabbed menu with prices", "Table-booking form", "Gallery with lightbox", "Scroll animations & map"],
     stack: ["Next.js", "Tailwind", "CSS scroll animations"],
@@ -23,7 +23,7 @@ const WORK = [
     tag: "AI sales agent",
     kind: "SaaS waitlist launch",
     shot: "/work/orbit.png",
-    live: "",
+    live: "https://orbit-ai-ivory-iota.vercel.app",
     summary: "A futuristic launch page for an AI sales agent — the product is shown working, not just described.",
     built: ["Animated orbit hero (hand-built SVG)", "Live agent activity feed", "Bento feature grid", "Waitlist capture + FAQ"],
     stack: ["Next.js", "Tailwind", "SVG animation"],
@@ -35,7 +35,7 @@ const WORK = [
     tag: "Miami luxury homes",
     kind: "Real estate",
     shot: "/work/nova.png",
-    live: "",
+    live: "https://nova-estates-eta.vercel.app",
     summary: "A quiet-luxury brokerage site — every section built to book a private viewing.",
     built: ["Filterable listings", "Featured-home story with parallax", "Neighbourhood slider", "Viewing request form"],
     stack: ["Next.js", "Tailwind", "Scroll-driven motion"],
@@ -47,7 +47,7 @@ const WORK = [
     tag: "Jujutsu Kaisen fan archive",
     kind: "Anime fan site",
     shot: "/work/ryoiki.png",
-    live: "",
+    live: "https://ryoiki-jjk.vercel.app",
     summary: "A loud, animated fan site — press a button and a full-screen Domain Expansion takes over, with sound.",
     built: ["3 full-screen Domain Expansions", "Synthesised sound & voice lines", "Spoiler-safe fight cards", "Hand-built CSS & SVG effects"],
     stack: ["Next.js", "Web Audio", "CSS animation"],
@@ -262,7 +262,7 @@ export default function Home() {
                         Visit live site ↗
                       </a>
                     ) : (
-                      <p className="mt-8 font-mono text-xs opacity-60">Concept project · live link coming soon</p>
+                      <p className="mt-8 font-mono text-xs opacity-60">Concept project</p>
                     )}
                   </div>
                   <a href={w.live || "#contact"} {...(w.live && { target: "_blank", rel: "noopener noreferrer" })} className="group block">
