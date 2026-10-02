@@ -1,26 +1,204 @@
+/* Hallmark · genre: playful-editorial · macrostructure: Portfolio Grid (case-study rows) · theme: custom "studio orange"
+ * paper oklch(97% 0.01 70) · accent oklch(66% 0.19 45) studio orange (from the portrait) · Bricolage Grotesque + JetBrains Mono
+ * axes: light / display-heavy sans / warm · nav: N1a (3 real destinations) · footer: Ft5 statement
+ */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: oklch(97% 0.01 70);
+  --color-paper-2: oklch(93% 0.016 70);
+  --color-rule: oklch(85% 0.016 70);
+  --color-muted: oklch(45% 0.016 60);
+  --color-ink: oklch(19% 0.015 50);
+  --color-accent: oklch(66% 0.19 45);
+  --color-accent-soft: oklch(66% 0.19 45 / 0.12);
+  --color-ok: oklch(62% 0.15 150);
+  --color-error: oklch(55% 0.19 25);
+
+  /* project card themes, borrowed from each project's own palette */
+  --color-noir: oklch(20% 0.02 55);
+  --color-noir-accent: oklch(76% 0.13 68);
+  --color-orbit: oklch(15% 0.03 265);
+  --color-orbit-accent: oklch(89% 0.19 125);
+  --color-nova: oklch(94% 0.015 85);
+  --color-nova-accent: oklch(52% 0.085 200);
+  --color-ryoiki: oklch(16% 0.05 300);
+  --color-ryoiki-accent: oklch(66% 0.24 305);
+
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  overflow-x: clip;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+.rise {
+  animation: rise 900ms var(--ease-out) both;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) rotate(-6deg) scale(0.9);
+  }
+}
+.pop {
+  animation: pop 700ms var(--ease-out) 700ms both;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* the orange ticker band */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+.fade {
+  animation: fade 400ms var(--ease-out) both;
+}
+
+/* scroll-driven reveals */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+}
+@keyframes tilt-in {
+  from {
+    opacity: 0.3;
+    transform: perspective(1200px) rotateX(12deg) translateY(60px) scale(0.94);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    .tilt-in {
+      animation: tilt-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee,
+  .pulse {
+    animation: none;
+  }
+  .rise,
+  .pop {
+    animation: fade 150ms linear both;
+  }
+}
+
+/* hero: rotating "available" badge, floating chips, hand-drawn underline */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin 18s linear infinite;
+}
+@keyframes float {
+  50% {
+    transform: translateY(-10px) rotate(var(--rot, 0deg));
+  }
+}
+.float {
+  transform: rotate(var(--rot, 0deg));
+  animation: float 4.5s ease-in-out infinite;
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 320;
+  }
+}
+.draw {
+  stroke-dasharray: 320;
+  animation: draw 1200ms var(--ease-out) 900ms both;
+}
+
+/* process: the connecting line fills as the steps scroll into view */
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fill {
+      transform-origin: left;
+      animation: fill linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 55%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin-slow,
+  .float {
+    animation: none;
+  }
+  .draw {
+    animation: none;
+    stroke-dasharray: none;
+  }
 }
