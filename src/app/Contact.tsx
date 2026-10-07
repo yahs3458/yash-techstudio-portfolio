@@ -66,6 +66,7 @@ export default function Contact({ linkedin }: { linkedin: string }) {
           <option>Landing page</option>
           <option>Business website</option>
           <option>Website redesign</option>
+          <option>Website + AI agent / automation</option>
           <option>Not sure yet</option>
         </select>
       </label>

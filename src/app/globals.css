@@ -25,6 +25,11 @@
   --color-ryoiki: oklch(16% 0.05 300);
   --color-ryoiki-accent: oklch(66% 0.24 305);
 
+  /* WhatsApp demo */
+  --color-wa-dark: oklch(45% 0.09 175);
+  --color-wa-bg: oklch(93% 0.02 85);
+  --color-wa-me: oklch(92% 0.09 135);
+
   --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 

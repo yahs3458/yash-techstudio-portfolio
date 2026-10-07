@@ -1,8 +1,21 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import Contact from "./Contact";
+import WhatsAppDemo from "./WhatsAppDemo";
 
 const LINKEDIN = "https://www.linkedin.com/in/yash-sharma-a39718232/";
+// Yash's WhatsApp number, digits only with country code (e.g. 9198xxxxxxxx). Falls back to the contact form.
+const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP;
+const BOT_CTA = WHATSAPP
+  ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hi Yash, I saw the WhatsApp AI agent demo. I'd like one for my business.")}`
+  : "#contact";
+
+const BOT_FEATURES = [
+  "Answers menu, prices & hours 24/7",
+  "Takes bookings and pickup orders",
+  "Sends reminders so fewer no-shows",
+  "Asks happy customers for a Google review",
+];
 
 // Live URLs — swap to the yashtechstudio.com subdomains once their DNS is set up.
 const WORK = [
@@ -103,8 +116,9 @@ export default function Home() {
           </a>
           <div className="flex items-center gap-6 text-sm sm:gap-8">
             <a href="#work" className="hidden transition-colors hover:text-accent sm:inline">Work</a>
-            <a href="#services" className="hidden transition-colors hover:text-accent sm:inline">Services</a>
-            <a href="#process" className="hidden transition-colors hover:text-accent md:inline">Process</a>
+            <a href="#ai-agent" className="hidden transition-colors hover:text-accent sm:inline">AI agents</a>
+            <a href="#services" className="hidden transition-colors hover:text-accent md:inline">Services</a>
+            <a href="/audit" className="transition-colors whitespace-nowrap hover:text-accent">Free audit</a>
             <a
               href="#contact"
               className="rounded-full bg-ink px-5 py-2.5 font-semibold whitespace-nowrap text-paper transition-colors duration-200 hover:bg-accent hover:text-ink"
@@ -282,6 +296,47 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="ai-agent" className="scroll-mt-20 border-y border-rule bg-paper-2">
+          <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 sm:px-10 md:py-32 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+            <div className="reveal">
+              <p className="font-mono text-xs text-muted">AI agents &amp; automation · try the demo →</p>
+              <h2 className={`mt-3 ${h2}`}>
+                A WhatsApp AI agent that <span className="text-accent">books customers</span> while you work
+              </h2>
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
+                Your customers already live on WhatsApp. The AI agent replies instantly, takes bookings and orders, and
+                follows up — so no message waits until you&rsquo;re free. I also build automation agents that handle the busywork: lead follow-ups, review requests, booking reminders and syncing data to your sheets or CRM.
+              </p>
+              <ul className="mt-6 grid gap-2">
+                {BOT_FEATURES.map((f) => (
+                  <li key={f} className="flex items-baseline gap-3">
+                    <span className="text-accent" aria-hidden>✦</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8">
+                <span className="text-5xl font-extrabold tracking-tight">+$300</span>{" "}
+                <span className="text-muted">with any website</span>
+              </p>
+              <p className="mt-2 max-w-md text-sm text-muted">
+                Runs on your own WhatsApp Business account, so any messaging or AI usage fees go straight to you — no
+                markup from me.
+              </p>
+              <a
+                href={BOT_CTA}
+                {...(WHATSAPP && { target: "_blank", rel: "noopener noreferrer" })}
+                className="mt-8 inline-flex items-center gap-3 rounded-full bg-wa-dark px-7 py-3.5 font-semibold text-white transition-transform hover:-translate-y-0.5"
+              >
+                Get this for your business →
+              </a>
+            </div>
+            <div className="reveal">
+              <WhatsAppDemo />
+            </div>
+          </div>
+        </section>
+
         <section id="services" className="scroll-mt-20 bg-ink text-paper">
           <div className="mx-auto max-w-7xl px-5 py-24 sm:px-10 md:py-32">
             <div className="reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -316,6 +371,13 @@ export default function Home() {
                 </article>
               ))}
             </div>
+            <a href="#ai-agent" className="mt-5 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-paper/15 bg-paper/5 p-6 transition-colors hover:border-accent sm:p-8">
+              <span>
+                <span className="block text-xl font-extrabold tracking-tight">+ AI agent or automation</span>
+                <span className="text-paper/70">WhatsApp or automation agent, added to any website. Messaging &amp; AI fees billed to your own account.</span>
+              </span>
+              <span className="text-4xl font-extrabold tracking-tight">+$300</span>
+            </a>
           </div>
         </section>
 
@@ -348,6 +410,19 @@ export default function Home() {
             </p>
             <p className="mt-8 font-mono text-sm text-muted">— Yash Sharma, Yash Techstudio</p>
           </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 pt-24 sm:px-10 md:pt-32">
+          <a href="/audit" className="reveal group flex flex-col gap-6 rounded-[2rem] border-2 border-ink bg-accent p-8 text-ink shadow-[8px_8px_0_var(--color-ink)] transition-transform hover:-translate-y-1 sm:p-12 md:flex-row md:items-center md:justify-between">
+            <span>
+              <span className="font-mono text-xs">Free · 30 seconds · no signup</span>
+              <span className="mt-2 block text-[clamp(2rem,4vw,3.25rem)] leading-[1] font-extrabold tracking-[-0.04em]">
+                Is your website losing customers?
+              </span>
+              <span className="mt-3 block max-w-xl text-ink/80">Get a plain-English check of speed, mobile layout and booking buttons.</span>
+            </span>
+            <span className="grid size-16 shrink-0 place-items-center rounded-full bg-ink text-2xl text-paper transition-transform duration-300 group-hover:rotate-[-45deg]">→</span>
+          </a>
         </section>
 
         <section id="contact" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-24 sm:px-10 md:py-32">
