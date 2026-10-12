@@ -2,6 +2,7 @@ import Image from "next/image";
 import AgentConsole from "./AgentConsole";
 import Contact from "./Contact";
 import SaasDemo from "./SaasDemo";
+import TeddyHelper from "./TeddyHelper";
 import WhatsAppDemo from "./WhatsAppDemo";
 
 const LINKEDIN = "https://www.linkedin.com/in/yash-sharma-a39718232/";
@@ -58,8 +59,8 @@ const GUARDRAILS = [
 ];
 
 // Live URLs — swap to the yashtechstudio.com subdomains once their DNS is set up.
-// Set RELAY_URL once Relay is deployed on Vercel.
-const RELAY_URL = process.env.NEXT_PUBLIC_RELAY_URL ?? "";
+// Relay live demo (Vercel).
+const RELAY_URL = "https://relay-vert-eight.vercel.app/app";
 
 const WORK = [
   {
@@ -709,6 +710,8 @@ export default function Home() {
           </span>
         </a>
       </main>
+
+      <TeddyHelper />
 
       <footer className="bg-ink text-paper">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-10">
