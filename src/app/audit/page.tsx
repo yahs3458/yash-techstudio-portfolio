@@ -3,7 +3,7 @@ import Link from "next/link";
 import AuditTool from "./AuditTool";
 
 export const metadata: Metadata = {
-  title: "Free website check — Yash Techstudio",
+  title: "Free website check — Yashh Techstudio",
   description: "Paste your website address and see, in plain English, what’s costing you customers: speed, mobile, booking buttons and more.",
 };
 
@@ -13,7 +13,7 @@ export default async function AuditPage({ searchParams }: PageProps<"/audit">) {
   return (
     <main className="mx-auto max-w-3xl px-5 py-14 sm:px-10 md:py-20">
       <Link href="/" className="text-lg font-extrabold tracking-tight">
-        Yash<span className="text-accent">.</span>Techstudio
+        Yashh<span className="text-accent">.</span>Techstudio
       </Link>
       <p className="mt-14 font-mono text-xs text-muted">Free · no signup · 30 seconds</p>
       <h1 className="mt-3 text-[clamp(2.8rem,7vw,5rem)] leading-[0.92] font-extrabold tracking-[-0.05em]">

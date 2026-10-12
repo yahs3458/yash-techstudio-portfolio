@@ -13,21 +13,40 @@ const mono = JetBrains_Mono({
 });
 
 const description =
-  "Yash Sharma designs and builds fast, beautiful landing pages and websites for small businesses and startups. Remote, worldwide.";
+  "Yashh Techstudio builds custom AI agents, small SaaS products and the websites around them — with a human in the loop where it counts. Remote, worldwide.";
 
 // og/twitter image comes from app/opengraph-image.png (Next file convention)
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.yashtechstudio.com"),
-  title: "Yash Techstudio — Landing pages & websites that sell",
+  title: { default: "Yashh Techstudio — AI agents that do the work", template: "%s · Yashh Techstudio" },
   description,
+  applicationName: "Yashh Techstudio",
+  keywords: [
+    "AI agent development",
+    "custom AI agents",
+    "AI automation agency",
+    "WhatsApp AI agent",
+    "AI chatbot for business",
+    "multi-agent systems",
+    "agentic AI developer",
+    "SaaS MVP development",
+    "Next.js developer",
+    "landing page design",
+    "website development India",
+  ],
+  authors: [{ name: "Yashh Sharma", url: "https://www.yashtechstudio.com" }],
+  creator: "Yashh Sharma",
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+  category: "technology",
   openGraph: {
-    title: "Yash Techstudio — Websites that sell",
+    title: "Yashh Techstudio — AI agents that do the work",
     description,
     url: "/",
-    siteName: "Yash Techstudio",
+    siteName: "Yashh Techstudio",
     type: "website",
   },
-  twitter: { card: "summary_large_image", title: "Yash Techstudio — Websites that sell", description },
+  twitter: { card: "summary_large_image", title: "Yashh Techstudio — AI agents that do the work", description, creator: "@yashtechstudio" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

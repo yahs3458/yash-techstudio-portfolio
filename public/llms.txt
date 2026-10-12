@@ -1,0 +1,23 @@
+# Yashh Techstudio
+
+> AI agent development studio run by Yashh Sharma (Ghaziabad, India — works remotely with clients worldwide). Builds custom AI agents, small SaaS products with agents built in, and the websites around them.
+
+## Services and starting prices
+- Custom AI agents — from $800 setup + $100/month support (India: from ₹40,000). Sales/lead follow-up agents, customer support agents that answer from your own docs, developer agents (code review, tests, bug triage), research agents, ops & reporting agents, finance (invoice follow-up) agents, content agents, hiring/screening agents, WhatsApp and website chat assistants that take bookings. Every agent ships with guardrails, logs and human approval for important actions.
+- SaaS & web app MVPs with AI features — from $2,500 (India: from ₹1,50,000). Next.js, auth, database, payments, agents on Claude or OpenAI.
+- Websites & landing pages — landing page from $300, business website from $800, redesign from $500 (India: ₹15,000 / ₹35,000 / ₹25,000).
+
+## Proof of work
+- Runs its own 3-agent outreach system in production: Lead Hunter (finds and audits businesses, sends personalised emails with safety checks), X Scout (finds people asking for help on X, drafts replies for human approval), Inbox Manager (handles replies and follow-ups, writes a daily report).
+- Relay — a concept SaaS CRM with three AI agents built in (follow-up, lead scoring, meeting booking), an approvals queue and an "Ask Relay" chat over the pipeline.
+- Front-end concept sites: NOIR (café), NOVA Estates (real estate), Orbit AI (SaaS launch page), RYŌIKI (animated fan site).
+
+## Founder
+Yashh Sharma — AI orchestration engineer (multi-agent systems with Paperclip, Claude Code, MCP) with 3+ years of frontend engineering and product design (Next.js, React, TypeScript, React Native).
+
+## Contact
+- Website: https://www.yashtechstudio.com (contact form at /#contact)
+- Email: sharmayash8447@gmail.com
+- X: https://x.com/yashtechstudio
+- LinkedIn: https://www.linkedin.com/in/yash-sharma-a39718232/
+- Free website audit: https://www.yashtechstudio.com/audit
