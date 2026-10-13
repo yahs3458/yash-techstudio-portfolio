@@ -24,6 +24,8 @@
   --color-nova-accent: oklch(52% 0.085 200);
   --color-ryoiki: oklch(16% 0.05 300);
   --color-ryoiki-accent: oklch(66% 0.24 305);
+  --color-aria: oklch(16% 0.014 40);
+  --color-aria-accent: oklch(68% 0.21 35);
 
   /* WhatsApp demo */
   --color-wa-dark: oklch(45% 0.09 175);
@@ -264,4 +266,71 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .bit-led { animation: none; }
+}
+
+/* hero: headline words rise in one by one */
+@keyframes word {
+  from {
+    opacity: 0;
+    transform: translateY(60%) rotate(4deg);
+    filter: blur(6px);
+  }
+}
+.word {
+  display: inline-block;
+  animation: word 800ms var(--ease-out) both;
+  animation-delay: calc(var(--w) * 90ms + 100ms);
+}
+
+/* the TECHSTUDIO watermark fills with orange as you scroll past the hero */
+@keyframes ink-fill {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* proof numbers count up as they scroll into view; without support they just show the final value */
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+@keyframes count {
+  from {
+    --num: 0;
+  }
+}
+.count {
+  --num: var(--to);
+  counter-reset: num var(--num);
+}
+.count::after {
+  content: counter(num) var(--suffix, "");
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ink-fill {
+      background: linear-gradient(90deg, var(--color-accent) 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: ink-fill linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 70vh;
+    }
+    .count {
+      animation: count linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    animation: fade 150ms linear both;
+  }
 }

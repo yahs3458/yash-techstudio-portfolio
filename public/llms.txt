@@ -10,6 +10,7 @@
 ## Proof of work
 - Runs its own 3-agent outreach system in production: Lead Hunter (finds and audits businesses, sends personalised emails with safety checks), X Scout (finds people asking for help on X, drafts replies for human approval), Inbox Manager (handles replies and follow-ups, writes a daily report).
 - Relay — a concept SaaS CRM with three AI agents built in (follow-up, lead scoring, meeting booking), an approvals queue and an "Ask Relay" chat over the pipeline. Live demo: https://relay-vert-eight.vercel.app
+- Aria Cole — a concept portfolio for a motion designer: kinetic-type hero, looping CSS/SVG motion reels and an inquiry form. Creator & personal portfolios start at $500. Live demo: https://aria-motion.vercel.app
 - Front-end concept sites: NOIR (café), NOVA Estates (real estate), Orbit AI (SaaS launch page), RYŌIKI (animated fan site).
 
 ## Founder

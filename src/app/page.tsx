@@ -61,6 +61,8 @@ const GUARDRAILS = [
 // Live URLs — swap to the yashtechstudio.com subdomains once their DNS is set up.
 // Relay live demo (Vercel).
 const RELAY_URL = "https://relay-vert-eight.vercel.app/app";
+// Aria Cole concept portfolio (Vercel).
+const ARIA_URL = "https://aria-motion.vercel.app";
 
 const WORK = [
   {
@@ -74,6 +76,18 @@ const WORK = [
     stack: ["Next.js", "AI via OpenRouter", "Agent guardrails"],
     theme: "bg-orbit text-paper",
     accent: "text-orbit-accent",
+  },
+  {
+    name: "Aria Cole",
+    tag: "Motion designer portfolio",
+    kind: "Creator portfolio",
+    shot: "/work/aria.png",
+    live: ARIA_URL,
+    summary: "A bold one-page portfolio for a motion designer — the work moves on the page, so clients feel the style before they read a word.",
+    built: ["Kinetic-type hero, letter by letter", "6 looping motion reels in pure CSS/SVG", "Services, process & reviews", "Inquiry form with project & budget chips"],
+    stack: ["Next.js", "Tailwind", "CSS motion"],
+    theme: "bg-aria text-paper",
+    accent: "text-aria-accent",
   },
   {
     name: "NOIR",
@@ -145,7 +159,7 @@ const SERVICES = [
     from: "$300",
     note: "landing page",
     body: "The front door for your product or business — fast, custom and built to convert.",
-    items: ["Custom design, no templates", "Mobile-first & SEO-ready", "Booking, enquiry or waitlist forms", "Business site $800 · redesign $500"],
+    items: ["Custom design, no templates", "Mobile-first & SEO-ready", "Booking, enquiry or waitlist forms", "Creator & personal portfolios from $500", "Business site $800 · redesign $500"],
   },
 ];
 
@@ -171,10 +185,18 @@ const EXPERIENCE = [
 ];
 
 const STEPS = [
-  ["Free call", "30 minutes on your workflow — where time leaks, what a good outcome looks like."],
-  ["Agent design", "We map the job step by step, decide what the agent may do alone and where a human approves."],
-  ["Build & test", "Built on your real data and tools, tested on real cases before anyone relies on it."],
-  ["Launch & support", "Deployed with logs you can read, then tuned month by month as your business changes."],
+  ["Free call", "30 minutes on your workflow — where time leaks, what a good outcome looks like.", "Day 1"],
+  ["Agent design", "We map the job step by step, decide what the agent may do alone and where a human approves.", "Days 2–4"],
+  ["Build & test", "Built on your real data and tools, tested on real cases before anyone relies on it.", "Weeks 1–3"],
+  ["Launch & support", "Deployed with logs you can read, then tuned month by month as your business changes.", "Ongoing"],
+];
+
+// Real numbers only — nothing here is a client claim.
+const PROOF = [
+  ["3", "agents run our own outreach every day"],
+  ["6", "live products & demos you can click"],
+  ["<24h", "reply time, in your time zone"],
+  ["100%", "of the code & accounts are yours"],
 ];
 
 const TICKER = ["AI agents", "Multi-agent workflows", "WhatsApp & chat assistants", "SaaS MVPs", "Claude & OpenAI", "Human-in-the-loop", "Next.js", "Websites that convert"];
@@ -280,7 +302,7 @@ export default function Home() {
         <section className="relative overflow-hidden">
           <p
             aria-hidden
-            className="pointer-events-none absolute -bottom-[1.5vw] left-1/2 -translate-x-1/2 text-[15vw] leading-none font-extrabold tracking-[-0.06em] whitespace-nowrap text-transparent [-webkit-text-stroke:1.5px_var(--color-rule)] select-none"
+            className="ink-fill pointer-events-none absolute -bottom-[1.5vw] left-1/2 -translate-x-1/2 text-[15vw] leading-none font-extrabold tracking-[-0.06em] whitespace-nowrap text-transparent [-webkit-text-stroke:1.5px_var(--color-rule)] select-none"
           >
             TECHSTUDIO
           </p>
@@ -288,14 +310,15 @@ export default function Home() {
             <div>
               <p className="rise inline-flex items-center gap-2 rounded-full border border-rule bg-paper px-3 py-1.5 font-mono text-xs">
                 <span className="pulse size-2 rounded-full bg-ok" aria-hidden />
-                AI agent studio · taking new projects
+                AI agent studio · 2 project slots open for November
               </p>
-              <h1
-                className="rise mt-6 text-[clamp(3rem,5.5vw+0.5rem,5.75rem)] leading-[0.9] font-extrabold tracking-[-0.06em] [overflow-wrap:anywhere]"
-                style={{ animationDelay: "100ms" }}
-              >
-                AI agents that{" "}
-                <span className="relative inline-block text-accent">
+              <h1 className="mt-6 text-[clamp(3rem,5.5vw+0.5rem,5.75rem)] leading-[0.9] font-extrabold tracking-[-0.06em] [overflow-wrap:anywhere]">
+                {["AI", "agents", "that"].map((w, i) => (
+                  <span key={w} className="word" style={{ "--w": i } as React.CSSProperties}>
+                    {w}&nbsp;
+                  </span>
+                ))}
+                <span className="word relative text-accent" style={{ "--w": 3 } as React.CSSProperties}>
                   do the work.
                   <svg viewBox="0 0 300 30" className="absolute -bottom-[0.12em] left-0 h-[0.2em] w-full text-ink" preserveAspectRatio="none" aria-hidden>
                     <path className="draw" d="M4 22 C 60 6, 120 28, 170 14 S 260 8, 296 18" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
@@ -337,9 +360,24 @@ export default function Home() {
           </ul>
         </div>
 
+        <section aria-label="Studio at a glance" className="mx-auto max-w-7xl px-5 pt-20 sm:px-10">
+          <dl className="grid grid-cols-2 border-y border-rule lg:grid-cols-4">
+            {PROOF.map(([n, l], i) => (
+              <div key={l} className={`reveal py-8 pr-4 ${i % 2 ? "pl-6 border-l border-rule" : ""} ${i === 2 ? "lg:border-l lg:pl-6" : ""} ${i > 1 ? "border-t border-rule lg:border-t-0" : ""}`}>
+                <dt className="sr-only">{l}</dt>
+                <dd className="text-[clamp(2.4rem,4vw,3.5rem)] leading-none font-extrabold tracking-[-0.05em]">
+                  <CountUp value={n} />
+                </dd>
+                <dd className="mt-3 max-w-[14rem] font-mono text-xs leading-relaxed text-muted">{l}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
         {/* case study: our own agents */}
         <section id="agents" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-24 sm:px-10 md:py-32">
-          <div className="reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-10">
+<p className="reveal font-mono text-xs tracking-widest text-muted uppercase">01 / Our agents</p>
+          <div className="reveal mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-10">
             <h2 className={h2}>
               We run on <span className="text-accent">our own agents</span>
             </h2>
@@ -379,7 +417,8 @@ export default function Home() {
 
         <section id="catalog" className="scroll-mt-20 border-y border-rule bg-paper-2">
           <div className="mx-auto max-w-7xl px-5 py-24 sm:px-10 md:py-32">
-            <div className="reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-10">
+<p className="reveal font-mono text-xs tracking-widest text-muted uppercase">02 / Agent catalog</p>
+            <div className="reveal mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-10">
               <h2 className={h2}>
                 Agents we <span className="text-accent">build for you</span>
               </h2>
@@ -405,7 +444,8 @@ export default function Home() {
 
         <section id="services" className="scroll-mt-20 bg-ink text-paper">
           <div className="mx-auto max-w-7xl px-5 py-24 sm:px-10 md:py-32">
-            <div className="reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <p className="reveal font-mono text-xs tracking-widest text-paper/60 uppercase">03 / Services &amp; pricing</p>
+            <div className="reveal mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <h2 className={h2}>
                 What we <span className="text-accent">build</span>
               </h2>
@@ -445,7 +485,7 @@ export default function Home() {
         <section id="saas" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-24 sm:px-10 md:py-32">
           <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
             <div className="reveal">
-              <p className="font-mono text-xs text-muted">SaaS with an agent inside · press &ldquo;Run agent&rdquo; →</p>
+              <p className="font-mono text-xs text-muted">04 / SaaS with an agent inside · press &ldquo;Run agent&rdquo; →</p>
               <h2 className={`mt-3 ${h2}`}>
                 Products where the <span className="text-accent">agent does the work</span>
               </h2>
@@ -475,7 +515,7 @@ export default function Home() {
         <section id="ai-agent" className="scroll-mt-20 border-y border-rule bg-paper-2">
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 sm:px-10 md:py-32 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
             <div className="reveal">
-              <p className="font-mono text-xs text-muted">Customer-facing agent · try the demo →</p>
+              <p className="font-mono text-xs text-muted">05 / Customer-facing agent · try the demo →</p>
               <h2 className={`mt-3 ${h2}`}>
                 A WhatsApp agent that <span className="text-accent">books customers</span> while you work
               </h2>
@@ -511,7 +551,8 @@ export default function Home() {
 
         {/* work: stacking cards — each project sticks and the next slides over it */}
         <section id="work" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-24 sm:px-10 md:py-32">
-          <div className="reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+<p className="reveal font-mono text-xs tracking-widest text-muted uppercase">06 / Selected work</p>
+          <div className="reveal mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <h2 className={h2}>
               Products we&rsquo;ve <span className="text-accent">built</span>
             </h2>
@@ -583,7 +624,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <p className="font-mono text-xs text-muted">Who you&rsquo;ll work with</p>
+                <p className="font-mono text-xs text-muted">07 / Who you&rsquo;ll work with</p>
                 <h2 className={`mt-3 ${h2}`}>
                   Agentic AI <span className="text-accent">+</span> frontend craft
                 </h2>
@@ -612,19 +653,21 @@ export default function Home() {
         </section>
 
         <section id="process" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-24 sm:px-10 md:py-32">
-          <h2 className={`reveal ${h2}`}>
+          <p className="reveal font-mono text-xs tracking-widest text-muted uppercase">08 / Process</p>
+          <h2 className={`reveal mt-4 ${h2}`}>
             How we&rsquo;ll <span className="text-accent">work</span>
           </h2>
           <ol className="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             <span aria-hidden className="absolute top-6 right-[12%] left-[12%] hidden h-0.5 bg-rule lg:block">
               <span className="fill block h-full bg-accent" />
             </span>
-            {STEPS.map(([t, b], i) => (
+            {STEPS.map(([t, b, when], i) => (
               <li key={t} className="reveal relative">
                 <span className="relative grid size-12 place-items-center rounded-full border-2 border-ink bg-paper font-mono font-bold shadow-[3px_3px_0_var(--color-ink)]">
                   {i + 1}
                 </span>
-                <h3 className="mt-5 text-2xl font-bold tracking-tight">{t}</h3>
+                <p className="mt-5 font-mono text-xs text-accent">{when}</p>
+                <h3 className="mt-1 text-2xl font-bold tracking-tight">{t}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{b}</p>
               </li>
             ))}
@@ -655,7 +698,8 @@ export default function Home() {
         </section>
 
         <section id="faq" className="mx-auto max-w-4xl scroll-mt-20 px-5 pt-24 sm:px-10 md:pt-32">
-          <h2 className={`reveal ${h2}`}>
+          <p className="reveal font-mono text-xs tracking-widest text-muted uppercase">09 / FAQ</p>
+          <h2 className={`reveal mt-4 ${h2}`}>
             Questions, <span className="text-accent">answered</span>
           </h2>
           <div className="mt-12 divide-y divide-rule border-y border-rule">
@@ -730,6 +774,18 @@ export default function Home() {
           </div>
         </div>
       </footer>
+    </>
+  );
+}
+
+// "100%" counts up from 0 on scroll (CSS only); non-numeric values like "<24h" render as-is.
+function CountUp({ value }: { value: string }) {
+  const m = value.match(/^(\d+)(%?)$/);
+  if (!m) return <>{value}</>;
+  return (
+    <>
+      <span className="sr-only">{value}</span>
+      <span aria-hidden className="count" style={{ "--to": m[1], "--suffix": m[2] ? '"%"' : '""' } as React.CSSProperties} />
     </>
   );
 }
