@@ -5,7 +5,7 @@ import SaasDemo from "./SaasDemo";
 import TeddyHelper from "./TeddyHelper";
 import WhatsAppDemo from "./WhatsAppDemo";
 
-const LINKEDIN = "https://www.linkedin.com/in/yash-sharma-a39718232/";
+const LINKEDIN = "https://www.linkedin.com/in/yashh-sharma-a39718232";
 const X_URL = "https://x.com/yashtechstudio";
 // Yash's WhatsApp number, digits only with country code (e.g. 9198xxxxxxxx). Falls back to the contact form.
 const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP;
