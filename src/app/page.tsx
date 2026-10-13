@@ -724,6 +724,7 @@ export default function Home() {
               <a href={X_URL} target="_blank" rel="noopener noreferrer" className="hover:text-paper">X</a>
               <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-paper">LinkedIn</a>
               <a href="/audit" className="hover:text-paper">Free audit</a>
+              <a href="/pay" className="hover:text-paper">Pay invoice</a>
               <a href="#contact" className="hover:text-paper">Contact</a>
             </div>
           </div>
