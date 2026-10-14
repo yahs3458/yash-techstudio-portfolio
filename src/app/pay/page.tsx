@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 // Razorpay Payment Page URL (e.g. https://rzp.io/rzp/yashhtechstudio). Set it in Vercel env; until then clients are asked to email for a link.
 const RAZORPAY_URL = process.env.NEXT_PUBLIC_RAZORPAY_URL;
-const EMAIL = "sharmayash8447@gmail.com";
+const EMAIL = "hello@yashtechstudio.com";
 
 const STEPS = [
   "Click “Pay securely” below.",
